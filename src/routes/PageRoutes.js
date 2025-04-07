@@ -22,6 +22,12 @@ const FavoritesRoutes = {
     favorites,
 };
 
+const search = '/search'
+
+const searchRoutes = {
+    search,
+}
+
 const notFound = '/404';
 
 const NotFoundRoutes = {
@@ -34,4 +40,5 @@ export const PageRoutes = {
     ArtistRoutes,
     FavoritesRoutes,
     NotFoundRoutes,
+    searchRoutes,
 }
