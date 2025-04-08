@@ -3,7 +3,7 @@ import { Box, Typography, Link as MuiLink } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { PageRoutes } from '../../routes/PageRoutes'; 
 import tgIcon from '../../assets/icons/tg.svg'
-import styles from './Footer.module.css'
+
 
 const Footer = () => {
   return (
@@ -38,7 +38,11 @@ const Footer = () => {
       <Typography variant="h6" color="text.secondary">
       Contact: @Arlandia
       </Typography>
-      <img src={tgIcon} alt="" width={30} height={30}/>
+      <MuiLink  
+        href={'https://t.me/Arlandia'}
+        target = '_blank'>
+        <img src={tgIcon} alt="" width={30} height={30}/>
+      </MuiLink>
       </Box>
     </Box>
   );

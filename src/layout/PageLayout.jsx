@@ -7,7 +7,9 @@ import Footer from '../components/Footer/Footer'
 const PageLayout = () => {
   return (
     <div className={styles.wrapper}>
-        <Header/>
+        <div className={styles.heading}>
+          <Header/>
+        </div>
         <main className={styles.main}>
             <Outlet/>
         </main>

@@ -1,21 +1,31 @@
-// src/components/ArtistsListItem.jsx
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardMedia, CardContent, IconButton, Typography } from '@mui/material';
 import { Heart } from 'lucide-react';
 import styles from './ArtistsListItem.module.css';
+import { isFavorite, toggleFavorite } from '../../utils/favoritesArtist';
 
 const ArtistsListItem = ({ artist }) => {
   const {
+    id,
     name,
     creationDate,
     image,
     members,
   } = artist;
 
+  const [favorite, setFavorite] = useState(false);
+  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+
+  useEffect(() => {
+    setFavorite(isFavorite(id));
+  }, [id]);
+
   const handleFavoriteClick = () => {
-    // Здесь будет логика добавления в избранное
-    console.log(`Добавляем/удаляем из избранного: ${name}`);
+    const newState = toggleFavorite(id);
+    setFavorite(newState);
+    setSnackbarMessage(newState ? `${name} added to favorites` : `${name} removed from favorites`);
+    setShowSnackbar(true);
   };
 
   return (
@@ -38,11 +48,13 @@ const ArtistsListItem = ({ artist }) => {
             onClick={handleFavoriteClick}
             size='small'
         >
-          <Heart />
+          <Heart 
+             color={favorite ? 'red' : 'black'}
+             fill={favorite ? 'rgb(255,48,64)' : 'none'}
+          />
         </IconButton>
       </div>
 
-      {/* Блок, который всплывает при hover */}
       <CardContent className={styles.infoOverlay}>
         <Typography variant="body2" gutterBottom>
           Creation: {creationDate}
