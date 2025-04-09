@@ -17,32 +17,30 @@ export const fetchArtists = async () => {
   };
 
 export const fetchArtistDetails = async (id) => {
-    try {
-      const [artistsResponse, relationResponse, locationsResponse, datesResponse] = await Promise.all([
-        groupieApi.get('/artists'),
-        groupieApi.get('/relation'),
-        groupieApi.get('/locations'),
-        groupieApi.get('/dates'),
-      ]);
-  
-      const artists = artistsResponse.data;
-      const artist = artists.find(item => item.id === Number(id));
-      if (!artist) {
-        throw new Error(`Artist with id ${id} not found`);
-      }
-  
-      const artistRelation = relationResponse.data[id] || null;
-      const artistLocations = locationsResponse.data[id] || null;
-      const artistDates = datesResponse.data[id] || null;
-  
-      return {
-        artist,
-        relation: artistRelation,
-        locations: artistLocations,
-        dates: artistDates,
-      };
-    } catch (error) {
-      throw error;
-    }
+  try {
+    const [artistResponse, relationResponse, locationsResponse, datesResponse] = await Promise.all([
+      groupieApi.get(`/artists/${id}`),
+      groupieApi.get(`/relation/${id}`),
+      groupieApi.get(`/locations/${id}`),
+      groupieApi.get(`/dates/${id}`),
+    ]);
+
+    const artist = artistResponse.data;
+    const relationData = relationResponse.data;
+    const locationsData = locationsResponse.data;
+    const datesData = datesResponse.data;
+
+    console.log(datesData);
+    
+    return {
+      artist,
+      relation: relationData,
+      locations: locationsData,
+      dates: datesData,
+    };
+  } catch (error) {
+    console.error('Failed to fetch artist details:', error);
+    throw error;
+  }
 };
 

@@ -3,7 +3,7 @@ import { Box, Typography, Link as MuiLink } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { PageRoutes } from '../../routes/PageRoutes'; 
 import tgIcon from '../../assets/icons/tg.svg'
-
+import github_Icon from '../../assets/icons/github_Icon.svg'
 
 const Footer = () => {
   return (
@@ -34,15 +34,30 @@ const Footer = () => {
         </MuiLink>
       </Box>
 
-      <Box sx = {{display: 'flex', alignItems: 'center', gap:2}}>
-      <Typography variant="h6" color="text.secondary">
-      Contact: @Arlandia
-      </Typography>
-      <MuiLink  
-        href={'https://t.me/Arlandia'}
-        target = '_blank'>
-        <img src={tgIcon} alt="" width={30} height={30}/>
+      <MuiLink
+        href = 'https://github.com/01-edu/public/tree/master/subjects/groupie-tracker'  
+        target = '_blank'
+      >
+        <Box sx={{
+          display:'flex',
+          alignItems:'center',
+          gap:1.5
+        }}>
+          <Typography>
+            API 
+          </Typography>
+          <img src={github_Icon} alt='github' width={20} height={20}/>
+        </Box>
       </MuiLink>
+      <Box sx = {{display: 'flex', alignItems: 'center', gap:2}}>
+        <Typography variant="h6" color="text.secondary">
+          Contact: @Arlandia
+        </Typography>
+        <MuiLink  
+          href='https://t.me/Arlandia'
+          target = '_blank'>
+          <img src={tgIcon} alt="Telegram" width={20} height={20}/>
+        </MuiLink>
       </Box>
     </Box>
   );

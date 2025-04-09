@@ -1,9 +1,44 @@
-import React from 'react'
+import { useParams } from 'react-router-dom';
+import { Box, Typography, CircularProgress } from '@mui/material';
+import React from 'react';
+import { useArtistDetails } from '../../hooks/useArtistDetails/useArtistDetails';
+import ArtistCard from '../../components/ArtistCard/ArtistCard';
 
 const Artist = () => {
-  return (
-    <div>Artist</div>
-  )
-}
+  const { id } = useParams();
+  const { data: artistInfo, isLoading, isError } = useArtistDetails(id);
+  
 
-export default Artist
+    if (isLoading) {
+        return (
+          <Box sx={{ textAlign: 'center', mt: 3 }}>
+            <CircularProgress />
+            <Typography variant="body1" sx={{ mt: 1 }}>
+              Загрузка...
+            </Typography>
+          </Box>
+        );
+      }
+
+  if (isError || !artistInfo) {
+    return (
+      <Typography color="error" textAlign="center" mt={4}>
+        Failed to load artist details.
+      </Typography>
+    );
+  }
+
+  return (
+    <>
+      <ArtistCard
+        artistName = {artistInfo.artist.name}
+        creationDate = {artistInfo.artist.creationDate}
+        firstAlbum={artistInfo.artist.firstAlbum}
+        members={artistInfo.artist.members}
+        image={artistInfo.artist.image}
+      />
+    </>
+  );
+};
+
+export default Artist;
