@@ -3,12 +3,10 @@ import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY; 
 
-console.log(GOOGLE_MAPS_API_KEY);
-
 const libraries = ['places'];
 const mapContainerStyle = {
   width: '100%',
-  height: '500px'
+  height: '400px',
 };
 
 const defaultCenter = {
@@ -55,6 +53,13 @@ const MapCard = ({ city = "Paris", country = "France" }) => {
       mapContainerStyle={mapContainerStyle}
       zoom={10}
       center={markerPosition || defaultCenter}
+      options={{
+        mapTypeControl: false,
+        fullscreenControl: false,
+        streetViewControl: false,
+        zoomControl: false,
+
+      }}
     >
       {markerPosition && <Marker position={markerPosition} />}
     </GoogleMap>

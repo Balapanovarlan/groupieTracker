@@ -42,7 +42,7 @@ dd {
 body {
   min-height: 100dvh;
   scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
+  text-rendering: auto;
   line-height: 1.5;
   /* background-color: var(--colors__background); */
   color: var(--colors__black);

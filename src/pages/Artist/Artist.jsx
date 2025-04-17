@@ -9,6 +9,7 @@ const Artist = () => {
   const { data: artistInfo, isLoading, isError } = useArtistDetails(id);
   
 
+  
     if (isLoading) {
         return (
           <Box sx={{ textAlign: 'center', mt: 3 }}>
@@ -36,6 +37,8 @@ const Artist = () => {
         firstAlbum={artistInfo.artist.firstAlbum}
         members={artistInfo.artist.members}
         image={artistInfo.artist.image}
+        locations={artistInfo.locations.locations}
+        dates = {artistInfo.dates.dates}
       />
     </>
   );
