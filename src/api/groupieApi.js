@@ -29,8 +29,6 @@ export const fetchArtistDetails = async (id) => {
     const relationData = relationResponse.data;
     const locationsData = locationsResponse.data;
     const datesData = datesResponse.data;
-
-    console.log(datesData);
     
     return {
       artist,

@@ -2,18 +2,15 @@ import React from 'react'
 import { useArtists } from '../../hooks/UseArtists/UseArtists';
 import { Box, CircularProgress, Typography } from '@mui/material';
 import ArtistListItem from '../ArtistsListItem/ArtistsListItem';
+import styles  from './ArtistList.module.css'
+import Loading from '../Loading/Loading';
 
 const ArtistList = () => {
     const { data: artists, isLoading, isError } = useArtists();
 
     if (isLoading) {
         return (
-          <Box sx={{ textAlign: 'center', mt: 3 }}>
-            <CircularProgress />
-            <Typography variant="body1" sx={{ mt: 1 }}>
-              Загрузка...
-            </Typography>
-          </Box>
+            <Loading/>
         );
       }
 
@@ -36,11 +33,11 @@ const ArtistList = () => {
     }
 
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3, mt: 2 , justifyContent: 'center'}}>
+    <div className={styles.wrapper}>
         {artists.map((artist) => (
         <ArtistListItem key={artist.id} artist={artist} />
         ))}
-    </Box>
+    </div>
 )
 }
 

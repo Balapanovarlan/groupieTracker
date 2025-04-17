@@ -1,7 +1,6 @@
-import { Box, Typography } from '@mui/material'
 import React from 'react'
-import MapCard from '../MapCard/MapCard'
 import SliderOfLocations from '../SliderOfLocations/SliderOfLocations'
+import styles from './ArtistCard.module.css'
 
 const ArtistCard = ({
   artistName,
@@ -13,37 +12,34 @@ const ArtistCard = ({
   dates,
 }) => {
   return (
-    <Box sx={{
-      display:'flex',
-      alignItems:'center',
-      justifyContent: 'center',
-      padding:'2rem',
-      overflow:'visible'
-    }}>
-      <div style={{display:'flex', flexDirection:'column'}}>
-        <Box sx={{ display:'flex', justifyContent: 'center',maxWidth: 500, width: '100%', mt: 4 }}>
-        <img src={image} alt={artistName} style={{width:'50%', borderRadius: 8 }} />
-        </Box>
-        <Box sx={{width: '50%'}}>
-        <Typography variant="h4" >
-          {artistName}
-        </Typography>
-        <Typography variant="body1" mt={2}>
-          <strong>Creation:</strong> {creationDate}
-        </Typography>
-        <Typography variant="body1" mt={1}>
-          <strong>First Album:</strong> {firstAlbum}
-        </Typography>
-        <Typography variant="body1" mt={1}>
-          <strong>Members:</strong> {members?.join(', ')}
-        </Typography>
-        </Box>
+    <div className={styles.wrapper}>
+      <div className={styles.info}>
+        <div className={styles.imageContainer}>
+          <img
+            src={image}
+            alt={artistName}
+            className={styles.image}
+          />
+        </div>
+        <div className={styles.details}>
+          <h2 className={styles.title}>{artistName}</h2>
+          <p className={styles.field}>
+            <strong>Creation:</strong> {creationDate}
+          </p>
+          <p className={styles.field}>
+            <strong>First Album:</strong> {firstAlbum}
+          </p>
+          <p className={styles.field}>
+            <strong>Members:</strong> {members?.join(', ')}
+          </p>
+        </div>
       </div>
-      <SliderOfLocations 
-        locations = {locations}
-        dates = {dates}
+
+      <SliderOfLocations
+        locations={locations}
+        dates={dates}
       />
-    </Box>
+    </div>
   )
 }
 

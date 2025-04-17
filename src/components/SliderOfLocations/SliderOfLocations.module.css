@@ -4,17 +4,25 @@
     position: relative;
     /* вместо overflow: hidden */
     overflow: visible;
-  }
-  .slide {
+}
+.slide {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+    gap: 1rem;
+}
   
-  .date {
-    font-size: 1rem;
+.dateContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+}
+
+.date {
+    font-size: 1.5rem;
     font-weight: 500;
-    margin-bottom: 0.5rem;
     color: #333;
     text-align: center;
-  }
+}

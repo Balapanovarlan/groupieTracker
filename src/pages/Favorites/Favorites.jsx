@@ -3,6 +3,8 @@ import { Box, Typography } from '@mui/material';
 import ArtistsListItem from '../../components/ArtistsListItem/ArtistsListItem';
 import { useArtists } from '../../hooks/UseArtists/UseArtists';
 import { getFavorites } from '../../utils/favoritesArtist';
+import styles from './Favorites.module.css'
+import Loading from '../../components/Loading/Loading';
 
 const Favorites = () => {
   const { data: artists = [], isLoading, isError } = useArtists();
@@ -13,7 +15,7 @@ const Favorites = () => {
   }, [artists, favorites]);
 
   if (isLoading) {
-    return <Typography textAlign="center" mt={4}>Loading...</Typography>;
+    return <Loading/>
   }
 
   if (isError) {
@@ -25,19 +27,11 @@ const Favorites = () => {
   }
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: 2,
-        mt: 2,
-        justifyContent: 'center',
-      }}
-    >
+    <div className={styles.wrapper}>
       {favoriteArtists.map((artist) => (
         <ArtistsListItem key={artist.id} artist={artist} />
       ))}
-    </Box>
+    </div>
   );
 };
 

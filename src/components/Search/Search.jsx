@@ -27,7 +27,7 @@ const Search = () => {
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
-            <Link to={`/search?query=${encodeURIComponent(searchTerm)}`}>
+            <Link to={`/search?q=${encodeURIComponent(searchTerm)}`}>
               <IconButton>
                 <SearchIcon size={20} />
               </IconButton>

@@ -5,7 +5,6 @@ import styles from './ArtistsListItem.module.css';
 import { isFavorite, toggleFavorite } from '../../utils/favoritesArtist';
 import {Link as MuiLink} from '@mui/material';
 import { Link } from 'react-router-dom';
-import { PageRoutes } from '../../routes/PageRoutes';
 
 const ArtistsListItem = ({ artist }) => {
   const {
@@ -36,7 +35,7 @@ const ArtistsListItem = ({ artist }) => {
     <>
     
     <Card className={styles.card}>
-      <MuiLink  component={Link} to={`artist/${id}`} underline='none' color='info' >
+      <MuiLink  component={Link} to={`/artist/${id}`} underline='none' color='info' >
       <div className={styles.cardMediaWrapper} >
         <CardMedia
           component="img"
