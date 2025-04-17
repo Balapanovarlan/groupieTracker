@@ -6,6 +6,6 @@ export const useArtists = () => {
   return useQuery({
     queryKey: ['artists'],
     queryFn: fetchArtists,
-    staleTime: 1000 * 60 * 5, 
+    // staleTime: 1000 * 60 * 5, 
   });
 };

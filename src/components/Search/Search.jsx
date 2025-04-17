@@ -12,7 +12,7 @@ const Search = () => {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault(); 
-      navigate(`/search?query=${encodeURIComponent(searchTerm)}`);
+      navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
     }
   };
 

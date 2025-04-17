@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import React from 'react'
+import MapCard from '../MapCard/MapCard'
 
 const ArtistCard = ({
   artistName,
@@ -17,12 +18,11 @@ const ArtistCard = ({
     }}>
       <Box sx={{ maxWidth: 500, width: '100%', mt: 4 }}>
       <img src={image} alt={artistName} style={{width:'100%', borderRadius: 8 }} />
-      
+      </Box>
+      <Box>
       <Typography variant="h4" textAlign='center'>
         {artistName}
       </Typography>
-      </Box>
-      <Box>
       <Typography variant="body1" mt={2}>
         <strong>Creation:</strong> {creationDate}
       </Typography>
@@ -33,6 +33,7 @@ const ArtistCard = ({
         <strong>Members:</strong> {members?.join(', ')}
       </Typography>
       </Box>
+      <MapCard city='Berlin' country='Germany'/>
     </Box>
   )
 }

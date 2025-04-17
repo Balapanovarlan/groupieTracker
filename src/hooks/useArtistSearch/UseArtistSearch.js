@@ -5,7 +5,6 @@ export const useArtistSearch = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const { data: artists = [], isLoading, isError } = useArtists();
   
-    // Фильтруем артистов по введённой строке. Оптимизируем с помощью useMemo
     const filteredArtists = useMemo(() => {
       if (!searchTerm) return artists;
       const lowerCaseTerm = searchTerm.toLowerCase();

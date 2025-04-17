@@ -13,7 +13,7 @@ const ArtistSearchContainer = () => {
 
   // Получаем параметр "query" из URL, например: /search?query=Queen
   const queryParams = new URLSearchParams(location.search);
-  const searchTerm = queryParams.get('query') || '';
+  const searchTerm = queryParams.get('q') || '';
 
   // Фильтрация артистов на клиенте (оптимизировано через useMemo)
   const filteredArtists = useMemo(() => {
