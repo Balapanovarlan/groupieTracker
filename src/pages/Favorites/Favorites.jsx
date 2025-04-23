@@ -6,6 +6,8 @@ import Loading from '../../components/Loading/Loading';
 import styles from './Favorites.module.css';
 import { getFavorites } from '../../utils/favoritesArtist';
 import { useAuth } from '../../contexts/AuthContext';
+import EmptyBanner from '../../components/EmptyBanner/EmptyBanner';
+import noFavImg from '../../assets/icons/noFavImg.svg'
 
 const Favorites = () => {
   const { data: artists = [], isLoading, isError } = useArtists();
@@ -32,9 +34,13 @@ const Favorites = () => {
 
   if (favoriteArtists.length === 0) {
     return (
-      <Typography textAlign="center" mt={4}>
-        You have no favorite artists yet.
-      </Typography>
+      <EmptyBanner
+        title="No favorites yet"
+        description="You haven't added any artists to your favorites. Discover and add them now!"
+        image={noFavImg}
+        buttonText="Explore Artists"
+        buttonLink="/"
+      />
     );
   }
 
