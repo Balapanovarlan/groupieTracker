@@ -16,3 +16,9 @@
     text-decoration: none;
     color: inherit;
 }
+
+.userBtns{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}

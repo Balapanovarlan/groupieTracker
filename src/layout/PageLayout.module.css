@@ -10,3 +10,9 @@
     z-index: 100;
     background-color: white;
 }
+
+.main{
+    display: flex;
+    justify-content: center;
+    min-height: 70dvh;
+}

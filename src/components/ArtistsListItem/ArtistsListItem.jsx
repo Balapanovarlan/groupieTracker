@@ -5,27 +5,33 @@ import styles from './ArtistsListItem.module.css';
 import { isFavorite, toggleFavorite } from '../../utils/favoritesArtist';
 import {Link as MuiLink} from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 
 const ArtistsListItem = ({ artist }) => {
-  const {
-    id,
-    name,
-    creationDate,
-    image,
-    members,
-  } = artist;
+  const {id,name,creationDate,image,members,} = artist;
+
+  const {user} = useAuth();
 
   const [favorite, setFavorite] = useState(false);
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
 
   useEffect(() => {
-    setFavorite(isFavorite(id));
-  }, [id]);
+    if(!user){
+      setFavorite(false);
+      return;
+    }
+    setFavorite(isFavorite(user.id,id));
+  }, [user, id]);
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
-    const newState = toggleFavorite(id);
+    if(!user){
+      setSnackbarMessage(`Please login to use favorites!`);
+      setShowSnackbar(true);
+      return;
+    }
+    const newState = toggleFavorite(user.id, id);
     setFavorite(newState);
     setSnackbarMessage(newState ? `${name} added to favorites` : `${name} removed from favorites`);
     setShowSnackbar(true);

@@ -6,7 +6,7 @@ import { Navigation,Pagination } from 'swiper/modules'
 import 'swiper/swiper-bundle.css';
 
 import styles from './SliderOfLocations.module.css'
-import { CalendarDays } from 'lucide-react';
+import { CalendarDays, MapPin } from 'lucide-react';
 const SliderOfLocations = ({
     locations = [],
     dates = [],
@@ -32,11 +32,18 @@ const SliderOfLocations = ({
                 <SwiperSlide 
                     className={styles.slide}
                 >
-                    <div className={styles.dateContainer}>
-                        <CalendarDays/>
-                        <span className={styles.date}>{date}</span>
+                    <div className={styles.heading}>
+                        <div className={styles.dateContainer}>
+                            <CalendarDays/>
+                            <span className={styles.date}>{date}</span>
+                        </div>
+                        <div className={styles.location}>
+                            <MapPin/>
+                            <span>{city}, {country}</span>
+                        </div>
                     </div>
                     <MapCard city={city} country={country}/>
+            
                 </SwiperSlide>
                 )
             })}

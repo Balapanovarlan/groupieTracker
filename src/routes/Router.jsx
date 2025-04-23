@@ -8,6 +8,7 @@ import Artist from '../pages/Artist/Artist'
 import NotFound from '../pages/NotFound/NotFound'
 import Favorites from '../pages/Favorites/Favorites'
 import ArtistSearchContainer from '../features/Search/ArtistSearchContainer/ArtistSearchContainer'
+import PrivateRoute from '../components/PrivateRoute/PrivateRoute'
 
 const Router = createBrowserRouter ([
     {
@@ -32,7 +33,11 @@ const Router = createBrowserRouter ([
             },
             {
                 path: PageRoutes.FavoritesRoutes.favorites,
-                element:<Favorites/>,
+                element:(
+                    <PrivateRoute>
+                        <Favorites/>
+                    </PrivateRoute>
+                ),
             },
             {
                 path: PageRoutes.searchRoutes.search,
