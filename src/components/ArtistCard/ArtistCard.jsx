@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import SliderOfLocations from '../SliderOfLocations/SliderOfLocations'
 import styles from './ArtistCard.module.css'
+import { useAppTheme } from '../../contexts/ThemeContext'
 
 const ArtistCard = ({
   artistName,
@@ -12,15 +13,12 @@ const ArtistCard = ({
   locations,
   dates,
 }) => {
-  const [isListOpen, setIsListOpen] = useState(false)
 
-  const toggleList = () => {
-    setIsListOpen(prev => !prev)
-  }
+  const {mode} = useAppTheme();
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.info}>
+    <div className={`${styles.wrapper}`}>
+      <div className={`${styles.info} ${styles[mode]}`}>
         <div className={styles.imageContainer}>
           <img src={image} alt={artistName} className={styles.image} />
         </div>
@@ -42,15 +40,6 @@ const ArtistCard = ({
         <SliderOfLocations locations={locations} dates={dates} />
       </div>
 
-      {isListOpen && (
-        <ul className={styles.listContainer}>
-          {members.map(member => (
-            <li key={member} className={styles.listItem}>
-              {member}
-            </li>
-          ))}
-        </ul>
-      )}
     </div>
   )
 }

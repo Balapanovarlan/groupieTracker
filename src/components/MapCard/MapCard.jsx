@@ -7,6 +7,7 @@ const libraries = ['places'];
 const mapContainerStyle = {
   width: '100%',
   height: '400px',
+  borderRadius: '0 0 10px 10px',
 };
 
 const defaultCenter = {

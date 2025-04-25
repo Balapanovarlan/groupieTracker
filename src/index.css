@@ -5,6 +5,7 @@
   --colors__accent: #D8BCFF;
   --colors__white: #ffffff;
   --colors__black: #111111;  
+  --colors__blue: #0288d1;
 }
 
 html {
@@ -44,8 +45,7 @@ body {
   scroll-behavior: smooth;
   text-rendering: auto;
   line-height: 1.5;
-  /* background-color: var(--colors__background); */
-  color: var(--colors__black);
+  font-family: "Raleway";
 }
 
 ul[class],
@@ -75,5 +75,4 @@ select {
 
 input:focus {
   outline: none;
-  color: var(--colors__white);
 }

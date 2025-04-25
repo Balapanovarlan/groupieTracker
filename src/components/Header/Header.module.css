@@ -22,3 +22,35 @@
     align-items: center;
     gap: 2rem;
 }
+
+.menuBtn{
+    display: none;
+}
+
+.light{
+    background-color: white;
+    color: black;
+}
+
+.dark{
+    background-color: black;
+    color: white;
+}
+
+@media(max-width: 768px){
+    .wrapper{
+        gap:1rem;
+    }
+    .userBtns{
+        display: none;
+    }
+    .menuBtn{
+        display: block;
+    }
+    .logo{
+        font-size: 1.4rem;
+    }
+    .logoLink{
+        width: 7rem;
+    }
+}

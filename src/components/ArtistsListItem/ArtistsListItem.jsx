@@ -41,7 +41,7 @@ const ArtistsListItem = ({ artist }) => {
     <>
     
     <Card className={styles.card}>
-      <MuiLink  component={Link} to={`/artist/${id}`} underline='none' color='info' >
+      <MuiLink  component={Link} to={`/artist/${id}`} underline='none' color='color.default'  >
       <div className={styles.cardMediaWrapper} >
         <CardMedia
           component="img"

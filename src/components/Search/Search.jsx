@@ -36,7 +36,7 @@ const Search = () => {
         ),
       }}
       sx={{
-        input: { fontSize: '1.6rem', color: '#000', paddingLeft:'1rem' },
+        input: { fontSize: '1.6rem', paddingLeft:'1rem' },
       }}
     />
   );

@@ -9,11 +9,11 @@ const Footer = () => {
   return (
     <Box
       component="footer"
+      bgcolor="background.paper"
       sx={{
         mt: 'auto',
         py: 3,
         px: 2,
-        backgroundColor: '#f5f5f5',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
