@@ -34,7 +34,6 @@ const Header = () => {
     logout();
     handleMenuClose();
   }
-console.log(mode);
 
   return (
     <div className={`${styles.wrapper} ${styles[mode]}`}>
@@ -92,6 +91,14 @@ console.log(mode);
               <ListItemButton component={Link} to={PageRoutes.FavoritesRoutes.favorites} onClick={toggleDrawer(false)}>
                 <ListItemIcon><BookHeart /></ListItemIcon>
                 <ListItemText primary="Favorites" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton onClick={toggleTheme}>
+                <ListItemIcon>
+                   {mode === 'light'? <Moon/> : <Sun/>}
+                </ListItemIcon>
+                <ListItemText>Mode</ListItemText>
               </ListItemButton>
             </ListItem>
             {user ? (

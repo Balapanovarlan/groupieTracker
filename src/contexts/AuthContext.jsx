@@ -5,6 +5,7 @@ const AuthContext = createContext(null);
 
 export const AuthProvider = ({children}) => {
     const [user , setUser ] = useState(null);
+    const [isInitializing, setIsInitializing] = useState(true);
     
     useEffect(()=>{
         const storedUser = localStorage.getItem('user');
@@ -19,6 +20,7 @@ export const AuthProvider = ({children}) => {
                 token: storedToken
               });
         }
+        setIsInitializing(false);
     },[])
 
     const login = (credential) => {
@@ -42,7 +44,7 @@ export const AuthProvider = ({children}) => {
 
     return(
         <AuthContext.Provider
-            value={{user, login, logout}}
+            value={{user, login, logout, isInitializing}}
         >
             {children}
         </AuthContext.Provider>
